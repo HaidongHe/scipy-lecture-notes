@@ -228,10 +228,10 @@ Reverse::
     >>> rcolors = colors[::-1]
     >>> rcolors
     ['white', 'black', 'green', 'blue', 'red']
-    >>> rcolors2 = list(colors)
+    >>> rcolors2 = list(colors) # new object that is a copy of colors in a different memory area
     >>> rcolors2
     ['red', 'blue', 'green', 'black', 'white']
-    >>> rcolors2.reverse() # in-place
+    >>> rcolors2.reverse() # in-place; reversing rcolors2 does not affect colors
     >>> rcolors2
     ['white', 'black', 'green', 'blue', 'red']
 
@@ -271,21 +271,9 @@ Concatenate and repeat lists::
     .. sourcecode:: ipython
 
         In [28]: rcolors.<TAB>
-        rcolors.__add__           rcolors.__iadd__          rcolors.__setattr__
-        rcolors.__class__         rcolors.__imul__          rcolors.__setitem__
-        rcolors.__contains__      rcolors.__init__          rcolors.__setslice__
-        rcolors.__delattr__       rcolors.__iter__          rcolors.__sizeof__
-        rcolors.__delitem__       rcolors.__le__            rcolors.__str__
-        rcolors.__delslice__      rcolors.__len__           rcolors.__subclasshook__
-        rcolors.__doc__           rcolors.__lt__            rcolors.append
-        rcolors.__eq__            rcolors.__mul__           rcolors.count
-        rcolors.__format__        rcolors.__ne__            rcolors.extend
-        rcolors.__ge__            rcolors.__new__           rcolors.index
-        rcolors.__getattribute__  rcolors.__reduce__        rcolors.insert
-        rcolors.__getitem__       rcolors.__reduce_ex__     rcolors.pop
-        rcolors.__getslice__      rcolors.__repr__          rcolors.remove
-        rcolors.__gt__            rcolors.__reversed__      rcolors.reverse
-        rcolors.__hash__          rcolors.__rmul__          rcolors.sort
+        rcolors.append   rcolors.index    rcolors.remove   
+        rcolors.count    rcolors.insert   rcolors.reverse  
+        rcolors.extend   rcolors.pop      rcolors.sort    
 
 Strings
 ~~~~~~~
@@ -294,8 +282,9 @@ Different string syntaxes (simple, double or triple quotes)::
 
     s = 'Hello, how are you?'
     s = "Hi, what's up"
-    s = '''Hello,                 # tripling the quotes allows the
-           how are you'''         # the string to span more than one line
+    s = '''Hello,
+           how are you'''         # tripling the quotes allows the
+                                  # string to span more than one line
     s = """Hi,
     what's up?"""
 
@@ -308,9 +297,10 @@ Different string syntaxes (simple, double or triple quotes)::
                ^
     SyntaxError: invalid syntax
 
-
-The newline character is ``\n``, and the tab character is
-``\t``.
+This syntax error can be avoided by enclosing the string in double quotes
+instead of single quotes. Alternatively, one can prepend a backslash to the
+second single quote. Other uses of the backslash are, e.g., the newline character
+``\n`` and the tab character ``\t``.
 
 .. tip::
 
@@ -345,9 +335,8 @@ Slicing::
 
 .. tip::
    
-    Accents and special characters can also be handled in Unicode strings
-    (see
-    https://docs.python.org/tutorial/introduction.html#unicode-strings).
+    Accents and special characters can also be handled as in Python 3
+    strings consist of Unicode characters.
 
 
 A string is an **immutable object** and it is not possible to modify its
@@ -378,15 +367,15 @@ contents. One may however create new strings from the original one.
     Python offers advanced possibilities for manipulating strings,
     looking for patterns or formatting. The interested reader is referred to
     https://docs.python.org/library/stdtypes.html#string-methods and
-    https://docs.python.org/library/string.html#new-string-formatting
+    https://docs.python.org/3/library/string.html#format-string-syntax
 
 String formatting::
 
-    >>> 'An integer: %i; a float: %f; another string: %s' % (1, 0.1, 'string')
+    >>> 'An integer: %i; a float: %f; another string: %s' % (1, 0.1, 'string') # with more values use tuple after %
     'An integer: 1; a float: 0.100000; another string: string'
 
     >>> i = 102
-    >>> filename = 'processing_of_dataset_%d.txt' % i
+    >>> filename = 'processing_of_dataset_%d.txt' % i   # no need for tuples with just one value after %
     >>> filename
     'processing_of_dataset_102.txt'
 

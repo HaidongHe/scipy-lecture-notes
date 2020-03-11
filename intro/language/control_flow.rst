@@ -224,11 +224,14 @@ Use **items**::
 
 .. note::
 
-   The ordering of a dictionary in random, thus we use :func:`sorted`
+   The ordering of a dictionary is random, thus we use :func:`sorted`
    which will sort on the keys.
 
 List Comprehensions
 -------------------
+
+Instead of creating a list by means of a loop, one can make use
+of a list comprehension with a rather self-explaining syntax.
 
 ::
 

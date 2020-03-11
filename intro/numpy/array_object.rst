@@ -110,7 +110,7 @@ NumPy Reference documentation
      Help on built-in function array in module numpy.core.multiarray:
      <BLANKLINE>
      array(...)
-         array(object, dtype=None, copy=True, order=None, subok=False, ...
+         array(object, dtype=None, ...
 
 
 - Looking for something:
@@ -222,10 +222,10 @@ Functions for creating arrays
 
     >>> c = np.linspace(0, 1, 6)   # start, end, num-points
     >>> c
-    array([ 0. ,  0.2,  0.4,  0.6,  0.8,  1. ])
+    array([0. ,  0.2,  0.4,  0.6,  0.8,  1. ])
     >>> d = np.linspace(0, 1, 5, endpoint=False)
     >>> d
-    array([ 0. ,  0.2,  0.4,  0.6,  0.8])
+    array([0. ,  0.2,  0.4,  0.6,  0.8])
 
 * Common arrays:
 
@@ -233,18 +233,18 @@ Functions for creating arrays
 
     >>> a = np.ones((3, 3))  # reminder: (3, 3) is a tuple
     >>> a
-    array([[ 1.,  1.,  1.],
-           [ 1.,  1.,  1.],
-           [ 1.,  1.,  1.]])
+    array([[1.,  1.,  1.],
+           [1.,  1.,  1.],
+           [1.,  1.,  1.]])
     >>> b = np.zeros((2, 2))
     >>> b
-    array([[ 0.,  0.],
-           [ 0.,  0.]])
+    array([[0.,  0.],
+           [0.,  0.]])
     >>> c = np.eye(3)
     >>> c
-    array([[ 1.,  0.,  0.],
-           [ 0.,  1.,  0.],
-           [ 0.,  0.,  1.]])
+    array([[1.,  0.,  0.],
+           [0.,  1.,  0.],
+           [0.,  0.,  1.]])
     >>> d = np.diag(np.array([1, 2, 3, 4]))
     >>> d
     array([[1, 0, 0, 0],
@@ -347,7 +347,7 @@ There are also other types:
 
   .. sourcecode:: pycon
 
-        >>> f = np.array(['Bonjour', 'Hello', 'Hallo',])
+        >>> f = np.array(['Bonjour', 'Hello', 'Hallo'])
         >>> f.dtype     # <--- strings containing max. 7 letters  # doctest: +SKIP
         dtype('S7')
 
@@ -370,13 +370,13 @@ Start by launching IPython:
 
 .. sourcecode:: bash
 
-    $ ipython
+    $ ipython # or ipython3 depending on your install
 
 Or the notebook:
 
 .. sourcecode:: bash
 
-   $ ipython notebook
+   $ jupyter notebook
 
 Once IPython has started, enable interactive plots:
 
@@ -414,27 +414,34 @@ Or, if you have enabled interactive plots with ``%matplotlib``:
 
 * **1D plotting**:
 
-  .. sourcecode:: pycon
+.. sourcecode:: pycon
 
-    >>> x = np.linspace(0, 3, 20)
-    >>> y = np.linspace(0, 9, 20)
-    >>> plt.plot(x, y)       # line plot    # doctest: +SKIP
-    [<matplotlib.lines.Line2D object at ...>]
-    >>> plt.plot(x, y, 'o')  # dot plot    # doctest: +SKIP
-    [<matplotlib.lines.Line2D object at ...>]
+  >>> x = np.linspace(0, 3, 20)
+  >>> y = np.linspace(0, 9, 20)
+  >>> plt.plot(x, y)       # line plot    # doctest: +SKIP
+  [<matplotlib.lines.Line2D object at ...>]
+  >>> plt.plot(x, y, 'o')  # dot plot    # doctest: +SKIP
+  [<matplotlib.lines.Line2D object at ...>]
 
-  .. plot:: pyplots/numpy_intro_1.py
+.. image:: auto_examples/images/sphx_glr_plot_basic1dplot_001.png
+    :width: 40%
+    :target: auto_examples/plot_basic1dplot.html
+    :align: center
 
 * **2D arrays** (such as images):
 
-  .. sourcecode:: pycon
+.. sourcecode:: pycon
 
-    >>> image = np.random.rand(30, 30)
-    >>> plt.imshow(image, cmap=plt.cm.hot)    # doctest: +SKIP
-    >>> plt.colorbar()    # doctest: +SKIP
-    <matplotlib.colorbar.Colorbar instance at ...>
+  >>> image = np.random.rand(30, 30)
+  >>> plt.imshow(image, cmap=plt.cm.hot)    # doctest: +ELLIPSIS
+  <matplotlib.image.AxesImage object at ...>
+  >>> plt.colorbar()    # doctest: +ELLIPSIS
+  <matplotlib.colorbar.Colorbar object at ...>
 
-  .. plot:: pyplots/numpy_intro_2.py
+.. image:: auto_examples/images/sphx_glr_plot_basic2dplot_001.png
+    :width: 50%
+    :target: auto_examples/plot_basic2dplot.html
+    :align: center
 
 .. seealso:: More in the: :ref:`matplotlib chapter <matplotlib>`
 
@@ -561,12 +568,12 @@ A small illustrated summary of NumPy indexing and slicing...
 
 .. only:: latex
 
-    .. image:: images/numpy_indexing.png
+    .. image:: ../../pyximages/numpy_indexing.pdf
         :align: center
 
 .. only:: html
 
-    .. image:: images/numpy_indexing.png
+    .. image:: ../../pyximages/numpy_indexing.png
         :align: center
         :width: 70%
 
@@ -753,7 +760,7 @@ Using boolean masks
     array([10,  3,  8,  0, 19, 10, 11,  9, 10,  6,  0, 20, 12,  7, 14])
     >>> (a % 3 == 0)
     array([False,  True, False,  True, False, False, False,  True, False,
-            True,  True, False,  True, False, False], dtype=bool)
+            True,  True, False,  True, False, False])
     >>> mask = (a % 3 == 0)
     >>> extract_from_a = a[mask] # or,  a[a%3==0]
     >>> extract_from_a           # extract a sub-array with the mask
@@ -796,7 +803,7 @@ New values can be assigned with this kind of indexing:
 .. tip::
 
   When a new array is created by indexing with an array of integers, the
-  new array has the same shape than the array of integers:
+  new array has the same shape as the array of integers:
 
   .. sourcecode:: pycon
 
@@ -815,12 +822,12 @@ The image below illustrates various fancy indexing applications
 
 .. only:: latex
 
-    .. image:: images/numpy_fancy_indexing.png
+    .. image:: ../../pyximages/numpy_fancy_indexing.pdf
         :align: center
 
 .. only:: html
 
-    .. image:: images/numpy_fancy_indexing.png
+    .. image:: ../../pyximages/numpy_fancy_indexing.png
         :align: center
         :width: 80%
 

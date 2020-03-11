@@ -130,9 +130,10 @@ Python
 
   * A variety of powerful environments to work in, such as
     `IPython <http://ipython.readthedocs.io/en/stable/>`__,
-    `Spyder <https://pythonhosted.org/spyder>`__,
+    `Spyder <https://www.spyder-ide.org/>`__,
     `Jupyter notebooks <http://jupyter.org/>`__,
-    `Pycharm <https://www.jetbrains.com/pycharm>`__
+    `Pycharm <https://www.jetbrains.com/pycharm>`__,
+    `Visual Studio Code <https://code.visualstudio.com/docs/languages/python>`__
 
 :Cons:
 
@@ -163,13 +164,13 @@ that can be combined to obtain a scientific computing environment:
 * Development tools (automatic testing, documentation generation)
 
 .. seealso::
-   
+
    :ref:`chapter on Python language <python_language_chapter>`
 
 |
 
 .. image:: random_c.jpg
-      :scale: 40
+      :scale: 50
       :align: right
 
 **Core numeric libraries**
@@ -178,21 +179,21 @@ that can be combined to obtain a scientific computing environment:
   objects, and routines to manipulate them. http://www.numpy.org/
 
   .. seealso::
-     
+
      :ref:`chapter on numpy <numpy>`
 
 * **Scipy** : high-level numerical routines.
   Optimization, regression, interpolation, etc http://www.scipy.org/
 
   .. seealso::
-     
+
     :ref:`chapter on scipy <scipy>`
 
 * **Matplotlib** : 2-D visualization, "publication-ready" plots
   http://matplotlib.org/
 
   .. seealso::
-     
+
     :ref:`chapter on matplotlib <matplotlib>`
 
 |
@@ -231,7 +232,7 @@ that can be combined to obtain a scientific computing environment:
 and much more packages not documented in the scipy lectures.
 
 .. seealso::
-   
+
    :ref:`chapters on advanced topics <advanced_topics_part>`
 
    :ref:`chapters on packages and applications <applications_part>`
@@ -249,6 +250,15 @@ Python comes in many flavors, and there are many ways to install it.
 However, we recommend to install a scientific-computing distribution,
 that comes readily with optimized versions of scientific modules.
 
+.. warning:: **You should install Python 3**
+
+  Python 2.7 is end of life, and will not be maintained past January 1, 2020.
+
+  **Working with Python 2.7 is at your own risk. Do not expect much support.**
+
+  * `Official announcement <https://www.python.org/dev/peps/pep-0373/>`_
+  * `The end is nigh <https://pythonclock.org/>`_
+
 **Under Linux**
 
 If you have a recent distribution, most of the tools are probably
@@ -258,19 +268,17 @@ packaged, and it is recommended to use your package manager.
 
 There are several fully-featured Scientific Python distributions:
 
-.. hlist::
-  :columns: 3
 
-  * `Anaconda <https://www.continuum.io/downloads>`_
+  
+
+.. rst-class:: horizontal
+
+  * `Anaconda <https://www.anaconda.com/download/>`_
   * `EPD <https://store.enthought.com/downloads>`_
   * `WinPython <https://winpython.github.io>`_
 
-.. topic:: **Python 3 or Python 2?**
 
-   In 2008, Python 3 was released. It is a major evolution of the
-   language that made a few changes. Some old scientific code does not
-   yet run under Python 3. However, this is infrequent and Python 3 comes
-   with many benefits. We advise that you install Python 3.
+
 
 
 
@@ -285,6 +293,8 @@ environment to work in, and not only one way of using it. Although
 this makes it harder for beginners to find their way, it makes it
 possible for Python to be used for programs, in web servers, or
 embedded devices.
+
+.. _interactive_work:
 
 Interactive work
 .................
@@ -323,9 +333,9 @@ Getting help by using the **?** operator after an object:
 	sep:  string inserted between values, default a space.
 	end:  string appended after the last value, default a newline.
 
-.. seealso:: 
+.. seealso::
 
-    * IPython user manual: http://ipython.org/ipython-doc/dev/index.html
+    * IPython user manual: https://ipython.readthedocs.io/en/stable/
 
     * Jupyter Notebook QuickStart:
       http://jupyter.readthedocs.io/en/latest/content-quickstart.html
@@ -337,11 +347,13 @@ As you move forward, it will be important to not only work interactively,
 but also to create and reuse Python files. For this, a powerful code editor
 will get you far. Here are several good easy-to-use editors:
 
-  * `Spyder <https://pythonhosted.org/spyder/>`_: integrates an IPython
+  * `Spyder <https://www.spyder-ide.org/>`_: integrates an IPython
     console, a debugger, a profiler...
   * `PyCharm <https://www.jetbrains.com/pycharm>`_: integrates an IPython
     console, notebooks, a debugger... (freely available,
     but commercial)
+  * `Visual Studio Code <https://code.visualstudio.com/docs/languages/python>`_:
+    itegrates a Python console, notebooks, a debugger, ...
   * `Atom <https://atom.io>`_
 
 Some of these are shipped by the various scientific Python distributions,
@@ -416,8 +428,8 @@ completion also works on file and directory names.*
     In [1]: x = 10
 
     In [2]: x.<TAB>
-    x.bit_length   x.denominator  x.imag         x.real         
-    x.conjugate    x.from_bytes   x.numerator    x.to_bytes     
+    x.bit_length   x.denominator  x.imag         x.real
+    x.conjugate    x.from_bytes   x.numerator    x.to_bytes
 
 
 |
@@ -504,4 +516,3 @@ remove files (a full list of aliases is shown when typing ``alias``).
     * A list of all available magic functions is shown when typing ``%magic``.
 
 .. :vim:spell:
-

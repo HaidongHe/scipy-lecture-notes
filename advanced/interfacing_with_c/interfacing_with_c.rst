@@ -108,7 +108,7 @@ return type.
 
 .. note::
 
-   Since refernce counting bugs are easy to create and hard to track down,
+   Since reference counting bugs are easy to create and hard to track down,
    anyone really needing to use the Python C-API should read the `section
    about objects, types and reference counts
    <https://docs.python.org/2/c-api/intro.html#objects-types-and-reference-counts>`_
@@ -161,6 +161,12 @@ This can be compiled:
 * ``--inplace`` will output the compiled extension module into the current directory
 
 The file ``cos_module.so`` contains the compiled extension, which we can now load in the IPython interpreter:
+
+.. note::
+
+   In Python 3, the filename for compiled modules includes metadata on the Python
+   interpreter (see `PEP 3149 <https://www.python.org/dev/peps/pep-3149/>`_) and is thus
+   longer. The import statement is not affected by this.
 
 .. sourcecode:: ipython
 
@@ -749,8 +755,8 @@ the Numpy array type to your Cython code. I.e. like specifying that variable
 bounds checking are supported. Look at the corresponding section in the `Cython
 documentation <http://docs.cython.org/src/tutorial/numpy.html>`_. In case you
 want to pass Numpy arrays as C arrays to your Cython wrapped C functions, there
-is a section about this in the `Cython wiki
-<http://wiki.cython.org/tutorials/NumpyPointerToC>`_.
+is a section about this in the `Cython documentation
+<http://docs.cython.org/src/userguide/memoryviews.html#pass-data-from-a-c-function-via-pointer>`_.
 
 In the following example, we will show how to wrap the familiar ``cos_doubles``
 function using Cython.
@@ -829,7 +835,7 @@ Further Reading and References
 ==============================
 
 * `Gaël Varoquaux's blog post about avoiding data copies
-  <http://gael-varoquaux.info/blog/?p=157>`_ provides some insight on how to
+  <http://gael-varoquaux.info/programming/cython-example-of-exposing-c-computed-arrays-in-python-without-data-copies.html>`_ provides some insight on how to
   handle memory management cleverly. If you ever run into issues with large
   datasets, this is a reference to come back to for some inspiration.
 

@@ -152,12 +152,12 @@ Draw contour lines::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_display_face.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_display_face.py>`]
 
-For fine inspection of intensity variations, use
+For smooth intensity variations, use ``interpolation='bilinear'``. For fine inspection of intensity variations, use
 ``interpolation='nearest'``::
 
-    >>> plt.imshow(f[320:340, 510:530], cmap=plt.cm.gray)        # doctest: +ELLIPSIS
+    >>> plt.imshow(f[320:340, 510:530], cmap=plt.cm.gray, interpolation='bilinear')        # doctest: +ELLIPSIS
     <matplotlib.image.AxesImage object at 0x...>
     >>> plt.imshow(f[320:340, 510:530], cmap=plt.cm.gray, interpolation='nearest')        # doctest: +ELLIPSIS
     <matplotlib.image.AxesImage object at 0x...>
@@ -168,7 +168,13 @@ For fine inspection of intensity variations, use
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_interpolation_face.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_interpolation_face.py>`]
+
+
+.. seealso::
+
+    More interpolation methods are in  `Matplotlib's examples <https://matplotlib.org/examples/images_contours_and_fields/interpolation_methods.html>`_.
+
 
 
 .. seealso:: 3-D visualization: Mayavi
@@ -221,7 +227,7 @@ Images are arrays: use the whole ``numpy`` machinery.
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_numpy_array.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_numpy_array.py>`]
 
 
 Statistical information
@@ -272,7 +278,7 @@ Geometrical transformations
     >>> face = misc.face(gray=True)
     >>> lx, ly = face.shape
     >>> # Cropping
-    >>> crop_face = face[lx / 4: - lx / 4, ly / 4: - ly / 4]
+    >>> crop_face = face[lx // 4: - lx // 4, ly // 4: - ly // 4]
     >>> # up <-> down flip
     >>> flip_ud_face = np.flipud(face)
     >>> # rotation
@@ -285,7 +291,7 @@ Geometrical transformations
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_geom_face.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_geom_face.py>`]
 
 Image filtering
 ===============
@@ -320,7 +326,7 @@ Blurring/smoothing
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_blur.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_blur.py>`]
 
 Sharpening
 ----------
@@ -344,7 +350,7 @@ Laplacian::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_sharpen.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_sharpen.py>`]
 
 
 Denoising
@@ -373,7 +379,7 @@ A **median filter** preserves better the edges::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_face_denoise.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_face_denoise.py>`]
 
 
 Median filter: better result for straight boundaries (**low curvature**)::
@@ -390,7 +396,7 @@ Median filter: better result for straight boundaries (**low curvature**)::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_denoising.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_denoising.py>`]
 
 
 Other rank filter: ``ndimage.maximum_filter``,
@@ -438,7 +444,7 @@ image.
     >>> el
     array([[False,  True, False],
            [ True,  True,  True],
-           [False,  True, False]], dtype=bool)
+           [False,  True, False]])
     >>> el.astype(np.int)
     array([[0, 1, 0],
            [1, 1, 1],
@@ -487,17 +493,17 @@ image.
     >>> a = np.zeros((5, 5))
     >>> a[2, 2] = 1
     >>> a
-    array([[ 0.,  0.,  0.,  0.,  0.],
-           [ 0.,  0.,  0.,  0.,  0.],
-           [ 0.,  0.,  1.,  0.,  0.],
-           [ 0.,  0.,  0.,  0.,  0.],
-           [ 0.,  0.,  0.,  0.,  0.]])
+    array([[0.,  0.,  0.,  0.,  0.],
+           [0.,  0.,  0.,  0.,  0.],
+           [0.,  0.,  1.,  0.,  0.],
+           [0.,  0.,  0.,  0.,  0.],
+           [0.,  0.,  0.,  0.,  0.]])
     >>> ndimage.binary_dilation(a).astype(a.dtype)
-    array([[ 0.,  0.,  0.,  0.,  0.],
-           [ 0.,  0.,  1.,  0.,  0.],
-           [ 0.,  1.,  1.,  1.,  0.],
-           [ 0.,  0.,  1.,  0.,  0.],
-           [ 0.,  0.,  0.,  0.,  0.]])
+    array([[0.,  0.,  0.,  0.,  0.],
+           [0.,  0.,  1.,  0.,  0.],
+           [0.,  1.,  1.,  1.,  0.],
+           [0.,  0.,  1.,  0.,  0.],
+           [0.,  0.,  0.,  0.,  0.]])
 
 
 Also works for grey-valued images::
@@ -522,7 +528,7 @@ Also works for grey-valued images::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_greyscale_dilation.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_greyscale_dilation.py>`]
 
 **Opening**: erosion + dilation::
 
@@ -568,7 +574,7 @@ Also works for grey-valued images::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_propagation.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_propagation.py>`]
 
 **Closing**: dilation + erosion
 
@@ -601,7 +607,7 @@ Use a **gradient operator** (**Sobel**) to find high intensity variations::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_find_edges.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_find_edges.py>`]
 
 
 Segmentation
@@ -634,7 +640,7 @@ Segmentation
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_histo_segmentation.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_histo_segmentation.py>`]
 
 Use mathematical morphology to clean up the result::
 
@@ -649,7 +655,7 @@ Use mathematical morphology to clean up the result::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_clean_morpho.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_clean_morpho.py>`]
 
 .. topic:: **Exercise**
     :class: green
@@ -749,7 +755,7 @@ Label connected components: ``ndimage.label``::
 
     >>> label_im, nb_labels = ndimage.label(mask)
     >>> nb_labels # how many regions?
-    16
+    28
     >>> plt.imshow(label_im)        # doctest: +ELLIPSIS
     <matplotlib.image.AxesImage object at 0x...>
 
@@ -759,7 +765,7 @@ Label connected components: ``ndimage.label``::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_synthetic_data.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_synthetic_data.py>`]
 
 Compute size, mean_value, etc. of each region::
 
@@ -787,7 +793,7 @@ Now reassign labels with ``np.searchsorted``::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_measure_data.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_measure_data.py>`]
 
 Find region of interest enclosing object::
 
@@ -802,7 +808,7 @@ Find region of interest enclosing object::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_find_object.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_find_object.py>`]
 
 Other spatial measures: ``ndimage.center_of_mass``,
 ``ndimage.maximum_position``, etc.
@@ -826,7 +832,7 @@ Example: block mean::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_block_mean.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_block_mean.py>`]
 
 When regions are regular blocks, it is more efficient to use stride
 tricks (:ref:`stride-manipulation-label`).
@@ -845,7 +851,7 @@ Non-regularly-spaced blocks: radial mean::
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_radial_mean.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_radial_mean.py>`]
 
 
 * **Other measures**
@@ -867,7 +873,7 @@ One example with mathematical morphology: `granulometry
     >>>
     >>> def granulometry(data, sizes=None):
     ...     s = max(data.shape)
-    ...     if sizes == None:
+    ...     if sizes is None:
     ...         sizes = range(1, s/2, 2)
     ...     granulo = [ndimage.binary_opening(data, \
     ...         structure=disk_structure(n)).sum() for n in sizes]
@@ -893,7 +899,17 @@ One example with mathematical morphology: `granulometry
 
 .. only:: html
 
-    [:ref:`Python source code <example_plot_granulo.py>`]
+    [:ref:`Python source code <sphx_glr_advanced_image_processing_auto_examples_plot_granulo.py>`]
+
+
+Full code examples
+==================
+
+.. include the gallery. Skip the first line to avoid the "orphan"
+   declaration
+
+.. include:: auto_examples/index.rst
+    :start-line: 1
 
 |
 

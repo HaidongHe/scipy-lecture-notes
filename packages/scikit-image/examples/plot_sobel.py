@@ -7,15 +7,11 @@ horizontal gradients.
 """
 
 from skimage import data
-# scikit-image has changes its API
-try:
-    from skimage import filters
-except ImportError:
-    from skimage import filter as filters
+from skimage import filters
 import matplotlib.pyplot as plt
 
 text = data.text()
-hsobel_text = filters.hsobel(text)
+hsobel_text = filters.sobel_h(text)
 
 plt.figure(figsize=(12, 3))
 
@@ -23,7 +19,7 @@ plt.subplot(121)
 plt.imshow(text, cmap='gray', interpolation='nearest')
 plt.axis('off')
 plt.subplot(122)
-plt.imshow(hsobel_text, cmap='spectral', interpolation='nearest')
+plt.imshow(hsobel_text, cmap='nipy_spectral', interpolation='nearest')
 plt.axis('off')
 plt.tight_layout()
 plt.show()

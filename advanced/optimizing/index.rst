@@ -93,7 +93,7 @@ Useful when you have a large program to profile, for example the
     (`ICA <https://en.wikipedia.org/wiki/Independent_component_analysis>`_). PCA
     is a technique for dimensionality reduction, i.e. an algorithm to explain
     the observed variance in your data using less dimensions. ICA is a source
-    seperation technique, for example to unmix multiple signals that have been
+    separation technique, for example to unmix multiple signals that have been
     recorded through multiple sensors. Doing a PCA first and then an ICA can be
     useful if you have more sensors than signals. For more information see:
     `the FastICA example from scikits-learn <http://scikit-learn.org/stable/auto_examples/decomposition/plot_ica_blind_source_separation.html>`_.
@@ -428,7 +428,7 @@ Additional Links
 
 * If you would like to track performace of your code across time, i.e. as you
   make new commits to your repository, you could try:
-  `vbench <https://github.com/pydata/vbench>`_
+  `asv <https://asv.readthedocs.io/>`_
 
 * If you need some interactive visualization why not try `RunSnakeRun
   <http://www.vrplumber.com/programming/runsnakerun/>`_

@@ -411,8 +411,8 @@ Decorators
 .. >>> print(A)
 .. None
 
-Since a function or a class are objects, they can be passed
-around. Since they are mutable objects, they can be modified.  The act
+Since functions and classes are objects, they can be passed
+around. Since they are mutable objects, they can be modified. The act
 of altering a function or class object after it has been constructed
 but before is is bound to its name is called decorating.
 
@@ -715,7 +715,7 @@ which really form a part of the language:
             data = numpy.load(file)
             return cls(data)
 
-  This is cleaner then using a multitude of flags to ``__init__``.
+  This is cleaner than using a multitude of flags to ``__init__``.
 
 - `staticmethod` is applied to methods to make them "static",
   i.e. basically a normal function, but accessible through the class
@@ -861,7 +861,7 @@ to modify the function, we can use a decorator::
       def _wrapper(self, *args, **kwargs):
 	  self.count += 1
 	  if self.count == 1:
-	      print self.func.__name__, 'is deprecated'
+	      print(self.func.__name__, 'is deprecated')
 	  return self.func(*args, **kwargs)
 
 .. TODO: use update_wrapper here
@@ -881,7 +881,7 @@ It can also be implemented as a function::
       def wrapper(*args, **kwargs):
           count[0] += 1
           if count[0] == 1:
-              print func.__name__, 'is deprecated'
+              print(func.__name__, 'is deprecated')
           return func(*args, **kwargs)
       return wrapper
 
@@ -1011,7 +1011,7 @@ leaving only the interesting ``do_something`` block.
    returned by ``__enter__`` is simply ignored.
 2. The block of code underneath ``with`` is executed.  Just like with
    ``try`` clauses, it can either execute successfully to the end, or
-   it can :simple:`break`, :simple:`continue`` or :simple:`return`, or
+   it can :simple:`break`, :simple:`continue` or :simple:`return`, or
    it can throw an exception. Either way, after the block is finished,
    the `__exit__ <object.__exit__>` method is called.
    If an exception was thrown, the information about the exception is
